@@ -2,9 +2,10 @@
   "name": "chat-noir",
   "version": "1.0.0",
   "description": "A simple chat app with a super good french pun for a name.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "nodemon server.js"
   },
   "author": "Nathan St.Amand",
   "license": "ISC",
@@ -13,6 +14,7 @@
     "socket.io": "^4.5.4"
   },
   "devDependencies": {
-    "jest": "^29.3.1"
+    "jest": "^29.3.1",
+    "nodemon": "^2.0.20"
   }
 }
