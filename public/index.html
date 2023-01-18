@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A cute little app to teach myself about sockets">
+  <title>Chat Noir</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,800&family=Material+Icons&display=swap" rel="stylesheet"> 
+
+  <link rel="stylesheet" href="/dist/main.css">
+</head>
+<body class="bg-slate-800 text-zinc-300 p-3">
+  <main>
+    <hgroup class="text-center mb-4">
+      <h1 class="text-4xl mb-2 font-bold">Chat Noir</h1>
+      <h2 class="text-xl">Choose a Name and Pick a Room</h2>
+    </hgroup>
+
+    <form action="/login" method="post" class="bg-slate-900 max-w-sm m-auto px-5 py-7 flex flex-col gap-4">
+      <div class="text-rose-600" id="error-box" style="display: none;">ERROR: Testing</div>
+      <div class="flex gap-2.5 items-center">
+        <span class="material-icons">account_circle</span>
+        <input type="text" name="username" id="username" placeholder="username" required class="flex-auto placeholder-gray-500 text-black p-1 px-2"> 
+      </div>
+      <div class="flex gap-2.5 items-center">
+        <span class="material-icons">forum</span>
+        <input type="text" name="room" id="room" placeholder="room" required class="flex-auto placeholder-gray-500 text-black py-1 px-2">
+      </div>
+      <div class="flex gap-2.5 items-center justify-center">
+        <label class="flex gap-2.5 py-1 px-7 items-center justify-center bg-black/80 text-zinc-300 text-lg font-bold cursor-pointer hover:bg-zinc-300/80 hover:text-black group">Enter 
+          <span class="material-icons text-2xl group-hover:translate-x-1 transition-transform duration-300">
+            double_arrow
+          </span>
+          <input type="submit" id="submit" value="" class="flex-auto text-slate-600 hidden">
+        </label>
+      </div>
+    </form>
+  </main>
+
+  <script src="/dist/js/index.js"></script>
+</body>
+</html>
