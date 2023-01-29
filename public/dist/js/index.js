@@ -18,7 +18,8 @@ function showError(code, user, room) {
   const errorCodes = {
     "incomplete-fields": "Please complete both the username and the room field.",
     "duplicate-username": `Username '${user}' already exists in room ${room}.`,
-    "invalid-username": `Username '${user}' is invalid, please choose another.`
+    "invalid-username": `Username '${user}' is invalid, please choose another.`,
+    "empty-room": `${room} is empty. Please sign in again.`
   };
   if (typeof errorCodes[code] === "undefined") {
     console.error(`No matching error code found for ${code}.`);
