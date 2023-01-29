@@ -22,11 +22,7 @@ socket.on("connect", () => {
   });
 });
 
-socket.on("update-room", () => {
-  fetch(`http://localhost:8000/${ROOM}/users`)
-    .then(res => res.json())
-    .then(data => setUsersInRoom(data, USERNAME))
-})
+socket.on("update-room", () => updateRoom(ROOM, USERNAME));
 
 socket.on("chat-message", msg => {
   createMessage(msg, USERNAME, messageFeed);
@@ -47,6 +43,12 @@ function sendMessage(event, messageInput) {
   messageInput.value = "";
 }
 
+async function updateRoom(room, username) {
+  fetch(`http://localhost:8000/${room}/users`)
+    .then(res => res.json())
+    .then(data => setUsersInRoom(data, username))
+}
+
 // helpers
 // TODO: Move duplicate function to helpers file
 function varExists(variable) {
@@ -65,6 +67,7 @@ function setUser(user) {
 
 function setUsersInRoom(users, currentUser) {
   const userList = document.querySelector("#user-list")
+  users = users.map(el => el.name);
   users = users.filter(el => el != currentUser);
   if (users.length < 1) return;
   switch (users.length) {
@@ -123,6 +126,9 @@ function createMessage(msg, currentUser, messageFeed) {
 }
 
 function styleMessage(author, currentUser) {
+  if (author == "System") {
+    return "text-sm text-white mt-2"
+  }
   const styleTypes = {
     outgoing: {
       bgColor: "bg-sky-400",
