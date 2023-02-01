@@ -14,6 +14,7 @@ const messageFeed = document.querySelector("#message-feed");
 
 setRoom(ROOM);
 setUser(USERNAME);
+loadMessages(ROOM)
 
 socket.on("connect", () => {
   socket.emit('join-room', {
@@ -24,12 +25,25 @@ socket.on("connect", () => {
 
 socket.on("update-room", () => updateRoom(ROOM, USERNAME));
 
+socket.on('disconnect', () => {
+  socket.emit('leave-room', {
+    username: USERNAME,
+    room: ROOM
+  })
+})
+
 socket.on("chat-message", msg => {
   createMessage(msg, USERNAME, messageFeed);
   messageFeed.scrollTop = messageFeed.scrollHeight;
 });
 
-form.addEventListener("submit", (e) => sendMessage(e, messageInput))
+form.addEventListener("submit", (e) => { 
+  sendMessage(e, messageInput)
+});
+
+window.addEventListener("unload", () => {
+  location.replace(location.origin + '/logout')
+})
 
 // handlers
 function sendMessage(event, messageInput) {
@@ -43,8 +57,19 @@ function sendMessage(event, messageInput) {
   messageInput.value = "";
 }
 
+async function loadMessages(room) {
+  fetch(`${location.origin}/${room}/messages`)
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(message => {
+        createMessage(message, USERNAME, messageFeed)
+      })
+      messageFeed.scrollTop = messageFeed.scrollHeight;
+    })
+}
+
 async function updateRoom(room, username) {
-  fetch(`http://localhost:8000/${room}/users`)
+  fetch(`${location.origin}/${room}/users`)
     .then(res => res.json())
     .then(data => setUsersInRoom(data, username))
 }
@@ -67,6 +92,7 @@ function setUser(user) {
 
 function setUsersInRoom(users, currentUser) {
   const userList = document.querySelector("#user-list")
+  userList.innerHTML = '';
   users = users.map(el => el.name);
   users = users.filter(el => el != currentUser);
   if (users.length < 1) return;

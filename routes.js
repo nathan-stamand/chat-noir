@@ -1,6 +1,5 @@
 const express = require("express");
-const app = express();
-const { loadHome, handleLogin, getUsers, loadChat } = require("./controller");
+const { loadHome, handleLogin, handleLogout, getUsers, getMessages, loadChat } = require("./controller");
 
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json()
@@ -18,7 +17,11 @@ router.get('/', loadHome);
 
 router.post('/login', handleLogin);
 
+router.get('/logout', handleLogout);
+
 router.get("/:room/users", getUsers);
+
+router.get("/:room/messages", getMessages);
 
 router.get("/chat", loadChat);
 

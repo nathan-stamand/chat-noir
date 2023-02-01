@@ -1,8 +1,9 @@
 const params = createParamObject();
-const user = getUserInfo()["username"];
-const room = getUserInfo()["room"];
+const user = params["username"];
+const room = params["roomname"];
 
 if (params['error']) {
+  console.log(user, room)
   showError(params['error'], user, room);
 }
 
