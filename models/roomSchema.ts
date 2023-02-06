@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const roomSchema = new mongoose.Schema({
   name: String,
@@ -8,6 +8,4 @@ const roomSchema = new mongoose.Schema({
 
 const rooms = new mongoose.model('rooms', roomSchema);
 
-module.exports = rooms;
-
-
+export { rooms }

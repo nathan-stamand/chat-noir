@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose"
 const uri = process.env.ATLAS_URI;
 
 // db
@@ -10,4 +10,4 @@ async function connection() {
   } 
 }
 
-module.exports = connection;
+export { connection }
