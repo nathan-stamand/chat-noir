@@ -1,14 +1,14 @@
-const Room = require("./models/roomSchema");
-const express = require("express");
+import { rooms as Room } from "./models/roomSchema";
+import express from "express";
 const app = express();
-const path = require("path");
-const cookieParser = require("cookie-parser");
+import path from "path";
+import cookieParser from "cookie-parser";
 
 // middleware
 app.use(cookieParser());
 
 async function loadHome (req, res) {
-  res.sendFile(path.join(__dirname, "/public/index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 }
 
 async function handleLogin (req, res) {
@@ -69,10 +69,10 @@ async function getMessages (req, res) {
 }
 
 async function loadChat (req, res) {
-  res.sendFile(path.join(__dirname, "/public/chat.html"));
+  res.sendFile(path.join(__dirname, "../public/chat.html"));
 }
 
-module.exports = {
+export {
   loadHome,
   handleLogin,
   handleLogout,

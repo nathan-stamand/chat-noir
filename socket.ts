@@ -1,6 +1,6 @@
-const Room = require("./models/roomSchema");
-const { Server } = require("socket.io");
-const { createTimeStamp } = require("./helpers");
+import {rooms as Room} from "./models/roomSchema";
+import { Server } from "socket.io";
+import { createTimeStamp } from "./helpers";
 
 function socket(server) {
   const io = new Server(server);
@@ -60,4 +60,4 @@ function socket(server) {
   });
 }
 
-module.exports = socket;
+export { socket };

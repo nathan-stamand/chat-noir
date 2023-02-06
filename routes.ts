@@ -1,7 +1,7 @@
-const express = require("express");
-const { loadHome, handleLogin, handleLogout, getUsers, getMessages, loadChat } = require("./controller");
+import express from "express";
+import { loadHome, handleLogin, handleLogout, getUsers, getMessages, loadChat } from "./controller";
 
-const bodyParser = require("body-parser");
+import bodyParser from "body-parser";
 const jsonParser = bodyParser.json()
 const urlParser = bodyParser.urlencoded({
   extended: true
@@ -25,4 +25,4 @@ router.get("/:room/messages", getMessages);
 
 router.get("/chat", loadChat);
 
-module.exports = router;
+export { router }

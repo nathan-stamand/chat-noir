@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "target": "ES6",
+    "sourceMap": true,
+    "strict": true,
+    "outDir": "./backend/",
+    "lib": ["es6"]
+  },
+  "include": ["./**/*.ts", "./*.ts"],
+  "exclude": ["./src/", "./node_modules/"]
+}

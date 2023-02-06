@@ -7,4 +7,4 @@ function createTimeStamp() {
   return Intl.DateTimeFormat('en', settings).format(new Date());
 }
 
-module.exports = { createTimeStamp };
+export { createTimeStamp };
