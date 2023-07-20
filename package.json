@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "dev": "nodemon server.js",
-    "prod": "npx tailwind -o ./public/dist/main.css --minify; node server.js",
+    "build": "npx tailwind -o ./public/dist/main.css --minify",
+    "prod": "node server.js",
     "tailwind": "npx tailwindcss -i ./css/main.css -o ./public/dist/main.css --watch"
   },
   "author": "Nathan St.Amand",
